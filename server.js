@@ -28,8 +28,6 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN;
 
 webpush.setVapidDetails(`mailto:${MAIL}`, PUBLIC_KEY, PRIVATE_KEY);
 
-console.log(CORS_ORIGIN.split("&"));
-
 const connect = async () => {
   await mongoose.connect(MONGO_URI);
   console.log("connected to database");

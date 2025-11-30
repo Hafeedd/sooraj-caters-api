@@ -15,7 +15,9 @@ async function scheduleMenuNotification(menu) {
     activeJobs.get(menu._id.toString()).cancel();
     activeJobs.delete(menu._id.toString());
   }
-
+  if (menu.menuDate === null || menu.menuDate === undefined) {
+    return;
+  }
   // Schedule new job
   const date = new Date(menu.menuDate);
 
@@ -44,10 +46,7 @@ async function scheduleMenuNotification(menu) {
 coming in 2 days (${dayjs(freshMenu.menuDate).format("DD-MM-YYYY")})`
         );
 
-        mailEventNotification(
-          freshMenu.parentId._id,
-          freshMenu.menuDate
-        );
+        mailEventNotification(freshMenu.parentId._id, freshMenu.menuDate);
       }
       freshMenu.notified = true;
       await freshMenu.save();
