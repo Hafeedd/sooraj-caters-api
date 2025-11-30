@@ -23,7 +23,7 @@ const menuSchema = mongoose.Schema(
     },
     menuDate: {
       type: Date,
-      required: true,
+      // required: true,
     },
     price: {
       type: String,
